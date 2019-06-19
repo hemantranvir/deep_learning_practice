@@ -60,7 +60,7 @@ print("data shape: ", data.shape)
 #labels = labels[indices]
 
 # We will use 80% of data for training & validation(80% train, 20% validation) and 20% for testing
-train_samples = int(len(messages)*0.95)
+train_samples = int(len(messages)*0.8)
 
 messages_train = data[:train_samples]
 labels_train = labels[:train_samples]
@@ -77,7 +77,7 @@ model = Sequential()
 ## Add embedding layer to convert one-hot encoding to word embeddings(the model learns the
 ## embedding matrix during training), embedding matrix has max_words as no. of rows and chosen
 ## no. of columns
-model.add(Embedding(max_words, 32))
+model.add(Embedding(input_dim=max_words, output_dim=embedding_mat_columns, input_length=max_len))
 
 model.add(SimpleRNN(32))
 #model.add(Flatten())
@@ -86,7 +86,7 @@ model.add(Dense(1, activation='sigmoid'))
 model.compile(optimizer='rmsprop', loss='binary_crossentropy', metrics=['acc'])
 model.summary()
 
-plot_model(model, to_file='model.png', show_shapes=True, show_layer_names=True)
+#plot_model(model, to_file='model.png', show_shapes=True, show_layer_names=True)
 
 #callback = TensorBoard(log_dir='./Graph', histogram_freq=0,
 #                       write_graph=True, write_images=True)
