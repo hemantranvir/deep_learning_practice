@@ -18,14 +18,14 @@ test_split = 0.3
 
 print(X_train[100])
 print('labels')
-print(y_train[1000])
+print(y_train[100])
 
 X_train = pad_sequences(X_train, padding = 'post')
 X_test = pad_sequences(X_test, padding = 'post')
 print('x train shape[0]', X_train.shape[0])
 print('x train shape[1]', X_train.shape[1])
 
-## pad the sequences with zeros 
+## pad the sequences with zeros
 ## padding parameter is set to 'post' => 0's are appended to end of sequences
 #X_train = pad_sequences(X_train, padding = 'post')
 #X_test = pad_sequences(X_test, padding = 'post')
@@ -43,10 +43,10 @@ print('x train shape[1]', X_train.shape[1])
 #    model.add(SimpleRNN(50, input_shape = (49,1), return_sequences = False))
 #    model.add(Dense(46))
 #    model.add(Activation('softmax'))
-#    
+#
 #    adam = optimizers.Adam(lr = 0.001)
 #    model.compile(loss = 'categorical_crossentropy', optimizer = adam, metrics = ['accuracy'])
-#    
+#
 #    return model
 #
 #model = KerasClassifier(build_fn = vanilla_rnn, epochs = 200, batch_size = 50, verbose = 1)
